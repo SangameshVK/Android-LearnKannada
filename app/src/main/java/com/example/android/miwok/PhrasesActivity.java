@@ -11,15 +11,9 @@ public class PhrasesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phrases);
-        String[] englishPhrases = { "I know kannada", "Good Morning", "How are you?", "I am fine" };
-        String[] kannadaPhrases = { "Nanage kannada barutte", "Shubha Munjane", "Neevu hegiddeeri?", "Naanu chennagiddeeni" };
-        ArrayList<Word> words = new ArrayList<>();
-        for(int i=1; i< englishPhrases.length; ++i){
-            words.add(new Word(englishPhrases[i], kannadaPhrases[i]));
-        }
-        WordAdapter phrasesAdapter = new WordAdapter(this, words, R.color.category_phrases);
-        ListView listView = (ListView) findViewById(R.id.phrasesList);
-        listView.setAdapter(phrasesAdapter);
+        setContentView(R.layout.activity_category);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, new PhrasesFragment())
+                .commit();
     }
 }
